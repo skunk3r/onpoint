@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Hello({elem, swipe}) {
 	return (
-		<div className='content'>
+		<div className='content mg-top'>
 			<h2>Привет,</h2>
 			<h1 className='title'>
 				Это <strong>не</strong> <br />коммерческое <br />задание

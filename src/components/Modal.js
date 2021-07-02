@@ -31,14 +31,16 @@ export default function Modal({onClick, addListeners}) {
 						src='../../src/assets/img/close-button.png' 
 						alt='close' onClick={() => {onClick(); addListeners()}} />
 				</button>
-				<div className='flex-box animation-box'>
+				<div className='animation-box'>
 					<h2>Преимущества</h2>
 					<h1 className='brand'>BREND<strong>XY</strong></h1>
+					<div id='list-container'>
 
-					{page === 1 && <List props={advantages} startIndex={1} endIndex={3} />}
+						{page === 1 && <List props={advantages} startIndex={1} endIndex={3} />}
 
-					{page === 2 && <List props={advantages} startIndex={4} />}
-
+						{page === 2 && <List props={advantages} startIndex={4} />}
+					
+					</div>
 					<div id='pagination'>
 						<button className='prev-button' onClick={() => handleClick('prev')}>
 							<img src='../../src/assets/img/prev-button.png' alt='prev' />

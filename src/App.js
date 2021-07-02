@@ -4,6 +4,7 @@ import Header from './components/Header.js'
 import Info from './components/Info.js'
 import BottlePage from './components/BottlePage.js'
 import Modal from './components/Modal.js'
+import Footer from './components/Footer.js'
 
 export default function App() {
 
@@ -15,7 +16,7 @@ export default function App() {
 	}
 
 	let margin = 0;
-	let width = 1600;
+	let width = 100;
 	let pages = 3;
 	let backgroundPos = 0;
 	let backgroundXMax = 3209;
@@ -38,22 +39,53 @@ export default function App() {
 		}	
 
 		document.body.style.backgroundPositionX = backgroundPos + 'px';
-		element.style.marginLeft = margin + 'px';
+		element.style.marginLeft = margin + '%';
 	}, [])
 
 	let eventStart;
 	let eventEnd
 
-	const onDown = useCallback((event) => {
+	const onTouchStart = useCallback((event) => {
+		eventStart = event.touches[0].clientX;
+	}, [])
+
+	const onTouchEnd = useCallback((event) => {
+		eventEnd = event.changedTouches[0].clientX;
+		if (eventEnd - eventStart > document.documentElement.clientWidth * 0.15) swipe(documentWrapper.current, 'right')
+			else if (eventStart - eventEnd > document.documentElement.clientWidth * 0.15) swipe(documentWrapper.current, 'left');
+	}, [])
+
+	useEffect(() => {
+		addListeners()
+	}, [])
+
+	const addListeners = useCallback(() => {
+		document.addEventListener('touchstart', onTouchStart);
+		document.addEventListener('touchend', onTouchEnd);
+	}, [])
+
+	const removeListeners = useCallback(() => {
+		document.removeEventListener('touchstart', onTouchStart);
+		document.removeEventListener('touchend', onTouchEnd);
+	}, [])
+
+	/*const onDown = useCallback((event) => {
 		event.preventDefault()
 
 		eventStart = event.clientX;
+		document.addEventListener('pointermove', onMove);
+	}, [])
+
+	const onMove = useCallback((event) => {
+		event.preventDefault();
 	}, [])
 
 	const onUp = useCallback((event) => {
 		eventEnd = event.clientX;
 		if (eventEnd - eventStart > document.documentElement.clientWidth * 0.15) swipe(documentWrapper.current, 'right')
 			else if (eventStart - eventEnd > document.documentElement.clientWidth * 0.15) swipe(documentWrapper.current, 'left');
+
+		document.removeEventListener('pointermove', onMove);
 	}, [])
 
 	useEffect(() => {
@@ -69,7 +101,7 @@ export default function App() {
 	const removeListeners = useCallback(() => {
 		document.removeEventListener('pointerdown', onDown);
 		document.removeEventListener('pointerup', onUp);
-	}, [])
+	}, [])*/
 
 	return (
 		<div id='wrapper'>
@@ -88,6 +120,9 @@ export default function App() {
 				<BottlePage onClick={toggleModal}/>
 
 			</div>
+
+			<Footer />
+			
 		</div>
 	)
 }

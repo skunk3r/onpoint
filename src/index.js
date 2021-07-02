@@ -1,4 +1,5 @@
 import './styles.css';
+import './bottle-page.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.js'

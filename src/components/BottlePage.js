@@ -1,14 +1,11 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 export default function BottlePage({onClick}) {
 	return (
 		<div className='content'>
 			<div className='flex-row'>
-				<img 
-					src='../../src/assets/img/bottle.png' 
-					alt='bottle' id='bottle'
-					onPointerDown={(e) => e.preventDefault()} />
-				<div className='flex-box'>
+				<div id='bottle-div'></div>
+				<div className='flex-box mg-top'>
 					<h2>Ключевое сообщение</h2>
 					<h1 className='brand'>BREND<strong>XY</strong></h1>
 					<div className='flex-row details-boxes'>
@@ -19,8 +16,7 @@ export default function BottlePage({onClick}) {
 						<p className='details-box first'>
 							3 раза в день после 
 							еды. После приема 
-							препарата рекомен-
-							дуется воздержаться 
+							препарата рекомендуется воздержаться 
 							от пищи и напитков 
 							в течение 1 часа 
 						</p>
