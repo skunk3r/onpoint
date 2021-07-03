@@ -22,3 +22,8 @@
 	font-family: 'Gilroy ExtraBold';
 	src: url("Gilroy-ExtraBold.ttf") format('truetype');
 }
+
+@font-face {
+	font-family: 'Circe';
+	src: url("circe.ttf") format('truetype');
+}

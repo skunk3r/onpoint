@@ -11,7 +11,7 @@
 
 body {
 	font-family: 'DIN Pro', sans-serif;
-	background: url(assets/img/bg2.jpg) no-repeat;
+	background: #fff url(assets/img/bg2.jpg) no-repeat;
 	transition: background .9s;
 	overflow-x: hidden;
 	height: auto;
@@ -55,7 +55,6 @@ img {
 }
 
 #wrapper {
-	padding-left: 55px;
 	overflow: hidden;
 }
 
@@ -69,11 +68,13 @@ img {
 header {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	position: fixed;
 	width: 20%;
 	height: 27px;
 	z-index: 10;
 	margin-top: 1.5%;
+	margin-left: 55px;
 }
 
 header > button {
@@ -84,16 +85,31 @@ header > button {
 	margin: 0 100px;
 }
 
+.home-button {
+	height: 20px;
+	cursor: pointer;
+}
+
+.home-line {
+	height: 27px;
+	margin: 0 25px;
+}
+
+header > p {
+	font-family: 'Circe', sans-serif;
+	font-size: 1em;
+	text-transform: uppercase;
+	line-height: 0.9;
+	margin-top: 7px;
+	letter-spacing: 2px;
+	color: #272727;
+}
+
 footer {
 	position: fixed;
 	left: 7%;
 	bottom: 3%;
 	z-index: 13;
-}
-
-header > img {
-	width: 159px;
-	height: 27px;
 }
 
 area {
@@ -103,6 +119,14 @@ area {
 .content {
 	width: 100%;
 	height: auto;
+	padding-left: 55px;
+}
+
+.content:first-child {
+	background: url(assets/img/pink-sperm.png) no-repeat -27% 98%,
+				url(assets/img/static-circle.png) no-repeat 36% 88%,
+				url(assets/img/static-circle-2.png) no-repeat 96% 5%,
+				url(assets/img/static-stick.png) no-repeat -10% 10%;
 }
 
 .title {
@@ -140,7 +164,7 @@ area {
 }
 
 .mg-top {
-	margin-top: 155px;
+	padding-top: 155px;
 }
 
 #info-container {
