@@ -41,38 +41,6 @@ export default function App() {
 	let eventStart;
 	let eventEnd;
 
-	/*const onTouchStart = useCallback((event) => {
-		eventStart = event.touches[0].clientX;
-
-		return false;
-	}, [])*/
-
-	const onTouchEnd = useCallback((event) => {
-		eventEnd = event.changedTouches[0].clientX;
-		if (eventEnd - eventStart > document.documentElement.clientWidth * 0.15) swipe(documentWrapper.current, 'right')
-			else if (eventStart - eventEnd > document.documentElement.clientWidth * 0.15) swipe(documentWrapper.current, 'left');
-
-		return false;
-	}, [])
-
-	useEffect(() => {
-		addListeners()
-	}, [])
-
-	const addListeners = useCallback(() => {
-		/*document.addEventListener('touchstart', onTouchStart);*/
-		document.addEventListener('touchend', onTouchEnd);
-		document.addEventListener('pointerdown', onDown);
-		document.addEventListener('pointerup', onUp);
-	}, [])
-
-	const removeListeners = useCallback(() => {
-		/*document.removeEventListener('touchstart', onTouchStart);*/
-		document.removeEventListener('touchend', onTouchEnd);
-		document.removeEventListener('pointerdown', onDown);
-		document.removeEventListener('pointerup', onUp);
-	}, [])
-
 	const onDown = useCallback((event) => {
 		event.preventDefault()
 
@@ -86,8 +54,7 @@ export default function App() {
 	}, [])
 
 	const onUp = useCallback((event) => {
-		if (event.pointerType === 'touch') console.log('done 2')/*eventEnd = event.clientX*/
-			else eventEnd = event.clientX;
+		eventEnd = event.clientX;
 
 		if (eventEnd - eventStart > document.documentElement.clientWidth * 0.15) swipe(documentWrapper.current, 'right')
 			else if (eventStart - eventEnd > document.documentElement.clientWidth * 0.15) swipe(documentWrapper.current, 'left');
@@ -95,9 +62,34 @@ export default function App() {
 		document.removeEventListener('pointermove', onMove);
 	}, [])
 
+	const onTouchEnd = useCallback((event) => {
+		eventEnd = event.changedTouches[0].clientX;
+		
+		if (eventEnd - eventStart > document.documentElement.clientWidth * 0.15) swipe(documentWrapper.current, 'right')
+			else if (eventStart - eventEnd > document.documentElement.clientWidth * 0.15) swipe(documentWrapper.current, 'left');
+
+		return false;
+	}, [])
+
+	const addListeners = useCallback(() => {
+		document.addEventListener('touchend', onTouchEnd);
+		document.addEventListener('pointerdown', onDown);
+		document.addEventListener('pointerup', onUp);
+	}, [])
+
+	const removeListeners = useCallback(() => {
+		document.removeEventListener('touchend', onTouchEnd);
+		document.removeEventListener('pointerdown', onDown);
+		document.removeEventListener('pointerup', onUp);
+	}, [])
+
 	function toggleModal() {
 		setModal(!modal);
 	}
+
+	useEffect(() => {
+		addListeners()
+	}, [])
 
 	return (
 		<div id='wrapper'>
