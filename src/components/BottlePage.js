@@ -10,7 +10,7 @@ export default function BottlePage({onClick}) {
 					<h1 className='brand'>BREND<strong>XY</strong></h1>
 					<div className='flex-row details-boxes'>
 						<img 
-							src="img/icon1.png" 
+							src="assets/img/icon1.png" 
 							alt="icon" className='icon'
 							onPointerDown={(e) => e.preventDefault()} />
 						<p className='details-box first'>
@@ -22,7 +22,7 @@ export default function BottlePage({onClick}) {
 						</p>
 						<div className='flex-column'>
 							<img 
-								src="img/icon2.png" 
+								src="assets/img/icon2.png" 
 								alt="icon" className='icon second'
 								onPointerDown={(e) => e.preventDefault()} />
 							<p className='details-box second'>
@@ -31,7 +31,7 @@ export default function BottlePage({onClick}) {
 							</p>
 							<button id='details-button' onClick={onClick}>
 								<img 
-									src='img/details.png' 
+									src='assets/img/details.png' 
 									alt='next' 
 									onPointerDown={(e) => e.preventDefault()} />
 							</button>

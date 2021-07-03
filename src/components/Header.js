@@ -4,13 +4,13 @@ export default function Header({elem, swipe}) {
 	return (
 		<header>
 			<img 
-				src='img/home-button.png' 
+				src='assets/img/home-button.png' 
 				alt='home'
 				className='home-button'
 				onPointerDown={(e) => e.preventDefault()} 
 				onClick={() => swipe(elem.current, 'right', true)} />
 			<img 
-				src='img/home-line.png' 
+				src='assets/img/home-line.png' 
 				alt='line'
 				className='home-line'
 				onPointerDown={(e) => e.preventDefault()} />

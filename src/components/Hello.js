@@ -8,7 +8,7 @@ export default function Hello({elem, swipe}) {
 				Это <strong>не</strong> <br />коммерческое <br />задание
 				<button id='whats-next-button' onClick={() => swipe(elem.current, 'left')}>
 					<img 
-						src='img/whats-next-button.png' 
+						src='assets/img/whats-next-button.png' 
 						alt='next' 
 						onPointerDown={(e) => e.preventDefault()} />
 				</button>

@@ -28,7 +28,7 @@ export default function Modal({onClick, addListeners}) {
 			<div id='modal-body'>
 				<button className='close-button'>
 					<img 
-						src='img/close-button.png' 
+						src='assets/img/close-button.png' 
 						alt='close' onClick={() => {onClick(); addListeners()}} />
 				</button>
 				<div className='animation-box'>
@@ -43,18 +43,18 @@ export default function Modal({onClick, addListeners}) {
 					</div>
 					<div id='pagination'>
 						<button className='prev-button' onClick={() => handleClick('prev')}>
-							<img src='img/prev-button.png' alt='prev' />
+							<img src='assets/img/prev-button.png' alt='prev' />
 						</button>
 						<img 
-							src={`img/${hightlightCircle(1)}`} 
+							src={`assets/img/${hightlightCircle(1)}`} 
 							alt='1'
 							onClick={() => handleClick('prev')} />
 						<img 
-							src={`img/${hightlightCircle(2)}`}
+							src={`assets/img/${hightlightCircle(2)}`}
 							alt='2'
 							onClick={() => handleClick('next')} />
 						<button className='next-button' onClick={() => handleClick('next')}>
-							<img src='img/next-button.png' alt='next' />
+							<img src='assets/img/next-button.png' alt='next' />
 						</button>
 					</div>
 				</div>
