@@ -4,7 +4,7 @@ export default function Header({elem, swipe}) {
 	return (
 		<header>
 			<img 
-				src='../../src/assets/img/home.png' 
+				src='img/home.png' 
 				alt='home' 
 				useMap='#navigation' 
 				onPointerDown={(e) => e.preventDefault()} />

@@ -46,7 +46,6 @@ export default function Info({removeListeners, addListeners}) {
 
 		document.addEventListener('touchmove', onTouchMove);
 
-		document.addEventListener('touchend', onTouchEnd);
 		document.ontouchend = function() {
 			document.removeEventListener('touchmove', onTouchMove);
 			document.ontouchend = null;
