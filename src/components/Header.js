@@ -14,8 +14,8 @@ export default function Header({elem, swipe}) {
 					shape='rect' coords='0,0, 21,27' 
 					nohref='true' alt='home' />
 			</map>
-			<button onClick={() => swipe(elem.current, 'right')}>prev</button>
-			<button onClick={() => swipe(elem.current, 'left')}>next</button>
+			<button onClick={() => swipe(elem.current, 'right')}>&#8592;</button>
+			<button onClick={() => swipe(elem.current, 'left')}>&#8594;</button>
 		</header>
 	)
 }

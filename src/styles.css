@@ -76,6 +76,14 @@ header {
 	margin-top: 1.5%;
 }
 
+header > button {
+	width: 50px;
+	padding: 0 15px 5px;
+	border: 1px solid #000;
+	border-radius: 5px;
+	margin: 0 100px;
+}
+
 footer {
 	position: fixed;
 	left: 7%;

@@ -1,6 +1,6 @@
 import React, {useRef, useEffect, useCallback, useState} from 'react'
 
-export default function Info() {
+export default function Info({removeListeners, addListeners}) {
 
 	const refSlider = useRef(null);
 	const refThumb = useRef(null);
@@ -22,6 +22,8 @@ export default function Info() {
 		refThumb.current.style.top = newPosY + 'px';
 
 		refInfo.current.style.marginTop = - newPosY * coef.current + 'px';
+
+		return false;
 	}, [])
 
 	const sliderOnTouchStart = useCallback((event) => {
@@ -32,22 +34,29 @@ export default function Info() {
 		refThumb.current.addEventListener('transitionend', removeTransition);
 
 		onTouchMove(event);
+
+		return false;
 	}, [])
 
 	const thumbOnTouchStart = useCallback((event) => {
 		removeTransition();
+		removeListeners();
 
 		shiftY = event.touches[0].clientY - refThumb.current.getBoundingClientRect().top;
 
 		document.addEventListener('touchmove', onTouchMove);
 
+		document.addEventListener('touchend', onTouchEnd);
 		document.ontouchend = function() {
 			document.removeEventListener('touchmove', onTouchMove);
 			document.ontouchend = null;
+			addListeners();
 		}
+
+		return false;
 	}, [])
 
-	/*const onPointerMove = useCallback((event) => {
+	const onPointerMove = useCallback((event) => {
 		let botBorder = refSlider.current.offsetHeight - refThumb.current.offsetHeight + 1;
 		let newPosY = event.target === refSlider.current ? 
 		event.clientY - refSlider.current.getBoundingClientRect().top - refThumb.current.offsetHeight / 2 : 
@@ -70,10 +79,11 @@ export default function Info() {
 
 		onPointerMove(event);
 	}, [])
-	
+
 	const thumbOnPointerDown = useCallback((event) => {
 		event.preventDefault();
 		removeTransition();
+		removeListeners();
 
 		shiftY = event.clientY - refThumb.current.getBoundingClientRect().top;
 
@@ -82,30 +92,29 @@ export default function Info() {
 		document.onpointerup = function() {
 			document.removeEventListener('pointermove', onPointerMove);
 			document.onpointerup = null;
+			addListeners();
 		}
-	}, [])*/
+	}, [])
 
 	function removeTransition() {
 		refThumb.current.style.transition = '';
 		refInfo.current.style.transition = '';
 	}
 
-	useEffect(() => throttler(), []);
+	useEffect(() => {throttler(); coef.current = calculateCoef();}, []);
 
-	const throttler = useCallback(() => {
-
-		function calculateCoef() {
+	const calculateCoef = useCallback(() => {
 			return (
 			(refInfo.current.scrollHeight - (refCutter.current.clientHeight - 30)) / 
 			(refSlider.current.offsetHeight - refThumb.current.offsetHeight + 2)
 			)
-		}
+		}, [])
 
-		coef.current = calculateCoef();
-
-		window.addEventListener("resize", resizeThrottler, false);
+	const throttler = useCallback(() => {
 
 		let resizeTimeout;
+
+		window.addEventListener("resize", resizeThrottler, false);
 
 		function resizeThrottler() {
 
@@ -126,12 +135,16 @@ export default function Info() {
 		refInfo.current.style.marginTop = - oldPosY * coef.current + 'px';
 	}, [])
 
+	function preventAnchor(event) {
+		if (!confirm(`Перейти на ${event.target.href}?`)) event.preventDefault();
+	}
+
 	return (
 		<div className='content mg-top'>
 			<h2>Текст сообщения</h2>
 			<div className='flex-row info-box'>
-				<div id='slider' ref={refSlider} /*onPointerDown={sliderOnPointerDown}*/ onTouchStart={sliderOnTouchStart}> 
-					<div id='thumb' ref={refThumb} /*onPointerDown={thumbOnPointerDown}*/ onTouchStart={thumbOnTouchStart}></div>
+				<div id='slider' ref={refSlider} onPointerDown={sliderOnPointerDown} onTouchStart={sliderOnTouchStart}> 
+					<div id='thumb' ref={refThumb} onPointerDown={thumbOnPointerDown} onTouchStart={thumbOnTouchStart}></div>
 				</div>
 				<div id='info-container'>
 					<div id='info-cutter' ref={refCutter}>
@@ -157,7 +170,7 @@ export default function Info() {
 							также термины спермии или антерозоиды (их применяют также 
 							к традиционно сближавшимся с растениями грибам).<br />
 							<br />
-							<a href='https://ru.wikipedia.org/wiki/сперматозоид'>https://ru.wikipedia.org/wiki/сперматозоид</a>
+							<a href='https://ru.wikipedia.org/wiki/сперматозоид' onClick={preventAnchor}>https://ru.wikipedia.org/wiki/сперматозоид</a>
 						</p>
 					</div>
 					<div id='transparent-border'></div>

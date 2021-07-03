@@ -11,10 +11,6 @@ export default function App() {
 	const documentWrapper = useRef(null);
 	const [modal, setModal] = useState(false);
 
-	function toggleModal() {
-		setModal(!modal);
-	}
-
 	let margin = 0;
 	let width = 100;
 	let pages = 3;
@@ -43,16 +39,20 @@ export default function App() {
 	}, [])
 
 	let eventStart;
-	let eventEnd
+	let eventEnd;
 
 	const onTouchStart = useCallback((event) => {
 		eventStart = event.touches[0].clientX;
+
+		return false;
 	}, [])
 
 	const onTouchEnd = useCallback((event) => {
 		eventEnd = event.changedTouches[0].clientX;
 		if (eventEnd - eventStart > document.documentElement.clientWidth * 0.15) swipe(documentWrapper.current, 'right')
 			else if (eventStart - eventEnd > document.documentElement.clientWidth * 0.15) swipe(documentWrapper.current, 'left');
+
+		return false;
 	}, [])
 
 	useEffect(() => {
@@ -62,14 +62,18 @@ export default function App() {
 	const addListeners = useCallback(() => {
 		document.addEventListener('touchstart', onTouchStart);
 		document.addEventListener('touchend', onTouchEnd);
+		document.addEventListener('pointerdown', onDown);
+		document.addEventListener('pointerup', onUp);
 	}, [])
 
 	const removeListeners = useCallback(() => {
 		document.removeEventListener('touchstart', onTouchStart);
 		document.removeEventListener('touchend', onTouchEnd);
+		document.removeEventListener('pointerdown', onDown);
+		document.removeEventListener('pointerup', onUp);
 	}, [])
 
-	/*const onDown = useCallback((event) => {
+	const onDown = useCallback((event) => {
 		event.preventDefault()
 
 		eventStart = event.clientX;
@@ -88,20 +92,9 @@ export default function App() {
 		document.removeEventListener('pointermove', onMove);
 	}, [])
 
-	useEffect(() => {
-		document.addEventListener('pointerdown', onDown);
-		document.addEventListener('pointerup', onUp);
-	}, [])
-
-	const addListeners = useCallback(() => {
-		document.addEventListener('pointerdown', onDown);
-		document.addEventListener('pointerup', onUp);
-	}, [])
-
-	const removeListeners = useCallback(() => {
-		document.removeEventListener('pointerdown', onDown);
-		document.removeEventListener('pointerup', onUp);
-	}, [])*/
+	function toggleModal() {
+		setModal(!modal);
+	}
 
 	return (
 		<div id='wrapper'>
@@ -115,7 +108,7 @@ export default function App() {
 
 				<Hello elem={documentWrapper} swipe={swipe} />
 
-				<Info />
+				<Info removeListeners={removeListeners} addListeners={addListeners} />
 
 				<BottlePage onClick={toggleModal}/>
 

@@ -6,7 +6,7 @@ export default function Footer() {
 			<img 
 				src="../../src/assets/img/footer.png" 
 				alt="onpoint" 
-				onClick={(e) => e.preventDefault()} />
+				onPointerDown={(e) => e.preventDefault()} />
 		</footer>
 	)
 }
