@@ -22,11 +22,11 @@ export default function Info({removeListeners, addListeners}) {
 		refThumb.current.style.top = newPosY + 'px';
 
 		refInfo.current.style.marginTop = - newPosY * coef.current + 'px';
-
 		return false;
 	}, [])
 
 	const sliderOnTouchStart = useCallback((event) => {
+
 		if (event.target != refSlider.current) return;
 
 		refInfo.current.style.transition = 'all, 0.3s';
@@ -37,6 +37,8 @@ export default function Info({removeListeners, addListeners}) {
 
 		return false;
 	}, [])
+
+	document.addEventListener
 
 	const thumbOnTouchStart = useCallback((event) => {
 		removeTransition();
@@ -80,10 +82,11 @@ export default function Info({removeListeners, addListeners}) {
 	}, [])
 
 	const thumbOnPointerDown = useCallback((event) => {
+		if (event.pointerType === 'touch') return;
 		event.preventDefault();
 		removeTransition();
 		removeListeners();
-
+		
 		shiftY = event.clientY - refThumb.current.getBoundingClientRect().top;
 
 		document.addEventListener('pointermove', onPointerMove);
