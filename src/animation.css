@@ -149,6 +149,7 @@
 	top: 12%;
 	left: 61%;
 	opacity: 0;
+	filter: blur(1px);
 	animation-delay: .2s;
 }
 
@@ -156,6 +157,7 @@
 	top: 10%;
 	left: 74%;
 	opacity: 0;
+	filter: blur(2px);
 	animation-delay: .6s;
 }
 
@@ -163,6 +165,7 @@
 	top: 52%;
 	left: 90%;
 	opacity: 0;
+	filter: blur(1px);
 	animation-delay: .8s;
 }
 
