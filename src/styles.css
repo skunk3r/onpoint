@@ -1,6 +1,7 @@
 @import '~normalize.css';
 @import 'assets/fonts/fonts.css';
 @import './bottle-page.css';
+@import './animation.css';
 
 * {
 	margin: 0;
@@ -11,7 +12,7 @@
 
 body {
 	font-family: 'DIN Pro', sans-serif;
-	background: #fff url(assets/img/bg2.jpg) no-repeat;
+	background: #fff url(assets/img/bg.jpg) no-repeat;
 	transition: background .9s;
 	overflow-x: hidden;
 	height: auto;
@@ -117,6 +118,7 @@ area {
 }
 
 .content {
+	position: relative;
 	width: 100%;
 	height: auto;
 	padding-left: 55px;
@@ -130,12 +132,14 @@ area {
 }
 
 .title {
+	position: relative;
 	font-family: 'Gilroy Light', sans-serif;
 	font-size: 11vw;
 	line-height: 1;
 	text-transform: uppercase;
 	margin: 0;
 	word-break: break-all;
+	z-index: 5;
 }
 
 #whats-next-button {
@@ -161,6 +165,8 @@ area {
 	margin-top: 50px;
 	margin-bottom: 3%;
 	height: 455px;
+	position: relative;
+	z-index: 5;
 }
 
 .mg-top {
@@ -226,3 +232,4 @@ area {
 	height: 108px;
 	background: url(assets/img/thumb.png) no-repeat;
 }
+ 

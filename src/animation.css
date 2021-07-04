@@ -1,0 +1,175 @@
+.animated {
+	position: absolute;
+}
+
+.bact {
+	bottom: 20%;
+	left: 5%;
+	z-index: 1;
+	animation: 15s infinite alternate linear bact;
+}
+
+@keyframes bact {
+	0% {
+		bottom: 20%;
+		left: 5%;
+	}
+
+	50% {
+		bottom: 30%;
+		left: -1%;
+		transform: rotate(60deg);
+	}
+}
+
+.big-bact {
+	bottom: -14%;
+	right: 18%;
+	z-index: 6;
+	transform: scale(0.8);
+	animation: 13s infinite alternate linear big-bact;
+}
+
+@keyframes big-bact {
+	0% {
+		right: 18%;
+		bottom: -14%;
+		transform: scale(0.8);
+	}
+
+	25% {
+		right: 18%;
+		bottom: -12%;
+		transform: scale(1.1) rotate(5deg);
+	}
+
+	45% {
+		right: 24%;
+		bottom: -4%;
+		transform: scale(0.9) rotate(20deg);
+	}
+
+	75% {
+		right: 17%;
+		bottom: -8%;
+		transform: scale(1) rotate(10deg);
+	}
+}
+
+.anim-div {
+	top: 25%;
+	right: 10%;
+	z-index: 7;
+	animation: 15s infinite linear star-bact;
+}
+
+.star-bact {
+	animation: 70s infinite rotate;
+}
+
+@keyframes star-bact {
+	0% {
+		transform: rotate(0deg) translateX(-30px) rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg) translateX(-30px) rotate(-360deg);
+	}
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(-360deg);
+	}
+}
+
+.bact-2 {
+	top: 7%;
+	right: 33%;
+	transform: scale(0.8);
+	animation: 20s infinite alternate linear bact-2;
+}
+
+@keyframes bact-2 {
+	0% {
+		top: 7%;
+		right: 33%;
+		transform: scale(0.8);
+	}
+
+	25% {
+		top: 9%;
+		right: 30%;
+		transform: scale(0.9);
+	}
+
+	45% {
+		top: 11%;
+		right: 27%;
+		transform: scale(1);
+	}
+
+	75% {
+		top: 12%;
+		right: 30%;
+		transform: scale(1);
+	}
+}
+
+.title-sperm {
+	top: 12%;
+	right: -9%;
+	z-index: 6;
+	transform: rotate(-8deg);
+	animation: 4s 1 forwards ease-out title-sperm;
+}
+
+@keyframes title-sperm {
+	100% {
+		 top: 15%;
+		 right: -1%;
+	}
+} 
+
+.sperm-squad {
+	/*animation: 3s linear infinite sperm-squad;*/
+}
+
+.sperm-squad:nth-of-type(1) {
+	top: 11%;
+	right: -55%;
+}
+
+.sperm-squad:nth-of-type(2) {
+	top: 12%;
+	right: -35%;
+}
+
+.sperm-squad:nth-of-type(3) {
+	top: 10%;
+    right: -16%;
+}
+
+.sperm-squad:nth-of-type(4) {
+	top: 52%;
+	right: -65%;
+}
+
+.sperm-squad:nth-of-type(5) {
+	top: 67%;
+    right: -24%;
+}
+
+@keyframes sperm-squad {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}

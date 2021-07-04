@@ -162,6 +162,11 @@ export default function Info({removeListeners, addListeners}) {
 					<div id='transparent-border'></div>
 				</div>
 			</div>
+			<img src='assets/img/animated/sperm-squad.png' alt='sperm squad' className='animated sperm-squad' />
+			<img src='assets/img/animated/sperm-squad-2.png' alt='sperm squad' className='animated sperm-squad' />
+			<img src='assets/img/animated/sperm-squad-3.png' alt='sperm squad' className='animated sperm-squad' />
+			<img src='assets/img/animated/sperm-squad-4.png' alt='sperm squad' className='animated sperm-squad' />
+			<img src='assets/img/animated/sperm-squad-5.png' alt='sperm squad' className='animated sperm-squad' />
 		</div>
 	)
 }

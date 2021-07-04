@@ -7,12 +7,16 @@ export default function Hello({elem, swipe}) {
 			<h1 className='title'>
 				Это <strong>не</strong> <br />коммерческое <br />задание
 				<button id='whats-next-button' onClick={() => swipe(elem.current, 'left')}>
-					<img 
-						src='assets/img/whats-next-button.png' 
-						alt='next' 
-						onPointerDown={(e) => e.preventDefault()} />
+					<img src='assets/img/whats-next-button.png' alt='next' />
 				</button>
 			</h1>
+			<img src='assets/img/animated/bact.png' alt='bacterium' className='animated bact' />
+			<img src='assets/img/animated/big-bact.png' alt='bacterium' className='animated big-bact' />
+			<div className='anim-div animated'>
+				<img src='assets/img/animated/star-bact.png' alt='bacterium' className='star-bact' />
+			</div>
+			<img src='assets/img/animated/bact-2.png' alt='bacterium' className='animated bact-2' />
+			<img src='assets/img/animated/title-sperm.png' alt='sperm' className='animated title-sperm' />
 		</div>
 	)
 }
