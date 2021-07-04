@@ -11,11 +11,11 @@ export default function Hello({elem, swipe}) {
 				</button>
 			</h1>
 			<img src='assets/img/animated/bact.png' alt='bacterium' className='animated bact' />
-			<img src='assets/img/animated/big-bact.png' alt='bacterium' className='animated big-bact' />
+			<img src='assets/img/animated/bact-2.png' alt='bacterium' className='animated bact' />
+			<img src='assets/img/animated/bact-3.png' alt='bacterium' className='animated bact' />
 			<div className='anim-div animated'>
 				<img src='assets/img/animated/star-bact.png' alt='bacterium' className='star-bact' />
 			</div>
-			<img src='assets/img/animated/bact-2.png' alt='bacterium' className='animated bact-2' />
 			<img src='assets/img/animated/title-sperm.png' alt='sperm' className='animated title-sperm' />
 		</div>
 	)

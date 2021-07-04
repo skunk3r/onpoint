@@ -30,6 +30,14 @@ export default function BottlePage({onClick}) {
 					</div>
 				</div>
 			</div>
+			<img src='assets/img/animated/bubble.png' alt='bubble' className='animated bubble' />
+			<img src='assets/img/animated/bubble-2.png' alt='bubble' className='animated bubble' />
+			<img src='assets/img/animated/bubble-3.png' alt='bubble' className='animated bubble' />
+			<img src='assets/img/animated/bubble-4.png' alt='bubble' className='animated bubble' />
+			<img src='assets/img/animated/bubble-5.png' alt='bubble' className='animated bubble' />
+			<img src='assets/img/animated/bubble-6.png' alt='bubble' className='animated bubble' />
+			<img src='assets/img/animated/bubble-7.png' alt='bubble' className='animated bubble' />
+			<img src='assets/img/animated/bubble-8.png' alt='bubble' className='animated bubble' />
 		</div>
 	)
 }
