@@ -10,6 +10,7 @@ export default function App() {
 
 	const documentWrapper = useRef(null);
 	const [modal, setModal] = useState(false);
+	const [classes, setClasses] = useState('');
 
 	let margin = 0;
 	let width = 100;
@@ -25,6 +26,11 @@ export default function App() {
 			margin = Math.max(margin, - (width * (pages - 1)));
 			backgroundPos -= newPos;
 			backgroundPos = Math.max(backgroundPos, -backgroundPosMax);
+			
+			if (margin === -100) {
+				removeClasses()
+				setTimeout(animateSecondSlide, 100)
+			}
 		}
 
 		if (dir === 'right') {
@@ -87,6 +93,14 @@ export default function App() {
 		setModal(!modal);
 	}
 
+	function animateSecondSlide() {
+		setClasses('sperm-squad-go');
+	}
+
+	function removeClasses() {
+		setClasses('');
+	}
+
 	useEffect(() => {
 		addListeners()
 	}, [])
@@ -103,7 +117,7 @@ export default function App() {
 
 				<Hello elem={documentWrapper} swipe={swipe} />
 
-				<Info removeListeners={removeListeners} addListeners={addListeners} />
+				<Info removeListeners={removeListeners} addListeners={addListeners} classes={classes} />
 
 				<BottlePage onClick={toggleModal}/>
 

@@ -135,38 +135,48 @@
 	}
 } 
 
-.sperm-squad {
-	/*animation: 3s linear infinite sperm-squad;*/
+.sperm-squad-go {
+	animation: 3s ease-out forwards sperm-squad;
 }
 
 .sperm-squad:nth-of-type(1) {
-	top: 11%;
-	right: -55%;
+	top: 12%;
+	left: 39%;
+	opacity: 0;
 }
 
 .sperm-squad:nth-of-type(2) {
 	top: 12%;
-	right: -35%;
+	left: 61%;
+	opacity: 0;
+	animation-delay: .2s;
 }
 
 .sperm-squad:nth-of-type(3) {
 	top: 10%;
-    right: -16%;
+    left: 74%;
+    opacity: 0;
+    animation-delay: .6s;
 }
 
 .sperm-squad:nth-of-type(4) {
 	top: 52%;
-	right: -65%;
+	left: 90%;
+	opacity: 0;
+	animation-delay: .8s;
 }
 
 .sperm-squad:nth-of-type(5) {
 	top: 67%;
-    right: -24%;
+    left: 91%;
+    opacity: 0;
+   animation-delay: 1s;
 }
 
 @keyframes sperm-squad {
 	0% {
 		opacity: 0;
+		transform: translateX(15%) translateY(15%);
 	}
 
 	100% {

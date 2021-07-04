@@ -24,7 +24,7 @@ export default function Modal({onClick, addListeners}) {
 	}
 
 	return(
-		<div id='modal'>
+		<div id='modal' onPointerDown={e => e.preventDefault()}>
 			<div id='modal-body'>
 				<button className='close-button'>
 					<img 

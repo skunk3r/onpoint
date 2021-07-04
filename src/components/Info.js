@@ -1,6 +1,6 @@
 import React, {useRef, useEffect, useCallback, useState} from 'react'
 
-export default function Info({removeListeners, addListeners}) {
+export default function Info({removeListeners, addListeners, classes}) {
 
 	const refSlider = useRef(null);
 	const refThumb = useRef(null);
@@ -8,7 +8,7 @@ export default function Info({removeListeners, addListeners}) {
 	const refInfo = useRef(null);
 	const coef = useRef(null);
 	const [resize, setResize] = useState(null);
-	
+
 	let shiftY;
 
 	const onTouchMove = useCallback((event) => {
@@ -129,8 +129,8 @@ export default function Info({removeListeners, addListeners}) {
 		<div className='content mg-top'>
 			<h2>Текст сообщения</h2>
 			<div className='flex-row info-box'>
-				<div id='slider' ref={refSlider} onPointerDown={sliderOnPointerDown} /*onTouchStart={sliderOnTouchStart}*/> 
-					<div id='thumb' ref={refThumb} onPointerDown={thumbOnPointerDown} /*onTouchStart={thumbOnTouchStart}*/></div>
+				<div id='slider' ref={refSlider} onPointerDown={sliderOnPointerDown}> 
+					<div id='thumb' ref={refThumb} onPointerDown={thumbOnPointerDown}></div>
 				</div>
 				<div id='info-container'>
 					<div id='info-cutter' ref={refCutter}>
@@ -162,11 +162,11 @@ export default function Info({removeListeners, addListeners}) {
 					<div id='transparent-border'></div>
 				</div>
 			</div>
-			<img src='assets/img/animated/sperm-squad.png' alt='sperm squad' className='animated sperm-squad' />
-			<img src='assets/img/animated/sperm-squad-2.png' alt='sperm squad' className='animated sperm-squad' />
-			<img src='assets/img/animated/sperm-squad-3.png' alt='sperm squad' className='animated sperm-squad' />
-			<img src='assets/img/animated/sperm-squad-4.png' alt='sperm squad' className='animated sperm-squad' />
-			<img src='assets/img/animated/sperm-squad-5.png' alt='sperm squad' className='animated sperm-squad' />
+			<img src='assets/img/animated/sperm-squad.png' alt='sperm squad' className={`animated sperm-squad ${classes}`} />
+			<img src='assets/img/animated/sperm-squad-2.png' alt='sperm squad' className={`animated sperm-squad ${classes}`} />
+			<img src='assets/img/animated/sperm-squad-3.png' alt='sperm squad' className={`animated sperm-squad ${classes}`} />
+			<img src='assets/img/animated/sperm-squad-4.png' alt='sperm squad' className={`animated sperm-squad ${classes}`} />
+			<img src='assets/img/animated/sperm-squad-5.png' alt='sperm squad' className={`animated sperm-squad ${classes}`} />
 		</div>
 	)
 }

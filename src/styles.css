@@ -23,11 +23,13 @@ h1, h2 {
 }
 
 h2 {
+	position: relative;
 	font-size: 1.7em;
 	text-transform: uppercase;
 	margin-bottom: 20px;
 	letter-spacing: 0.1em;
 	color: #242424;
+    z-index: 1;
 }
 
 p {
@@ -42,6 +44,10 @@ b {
 strong {
 	font-weight: normal;
 	font-family: 'Gilroy ExtraBold', sans-serif;
+}
+
+h1, h2, p {
+	cursor: default;
 }
 
 button {
