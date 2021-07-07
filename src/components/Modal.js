@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import List from './List.js'
 
-export default function Modal({onClick, addListeners}) {
+export default function Modal({onClick}) {
 
 	const [page, setPage] = useState(1);
 	const advantages = [
@@ -29,7 +29,7 @@ export default function Modal({onClick, addListeners}) {
 				<button className='close-button'>
 					<img 
 						src='assets/img/close-button.png' 
-						alt='close' onClick={() => {onClick(); addListeners()}} />
+						alt='close' onClick={() => onClick()} />
 				</button>
 				<div id='animation-box'>
 					<h2>Преимущества</h2>

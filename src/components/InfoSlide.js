@@ -1,6 +1,6 @@
 import React, {useRef, useEffect, useCallback, useState} from 'react'
 
-export default function Info({removeListeners, addListeners, classes}) {
+export default function Info({classes}) {
 
 	const refSlider = useRef(null);
 	const refThumb = useRef(null);
@@ -20,9 +20,8 @@ export default function Info({removeListeners, addListeners, classes}) {
 		newPosY = newPosY < -1 ? -1 : newPosY;
 		newPosY = newPosY > botBorder ? botBorder : newPosY;
 		refThumb.current.style.top = newPosY + 'px';
-
+		
 		refInfo.current.style.marginTop = - newPosY * coef.current + 'px';
-		return false;
 	}, [])
 
 	const onPointerMove = useCallback((event) => {
@@ -39,8 +38,8 @@ export default function Info({removeListeners, addListeners, classes}) {
 	}, [])
 
 	const sliderOnPointerDown = useCallback((event) => {
-		if (event.target != refSlider.current) return;
 		event.preventDefault();
+		if (event.target != refSlider.current) return;
 
 		refInfo.current.style.transition = 'all, 0.3s';
 		refThumb.current.style.transition = 'top, 0.3s';
@@ -52,30 +51,27 @@ export default function Info({removeListeners, addListeners, classes}) {
 	const thumbOnPointerDown = useCallback((event) => {
 		event.preventDefault();
 		removeTransition();
-		removeListeners();
 		
 		shiftY = event.clientY - refThumb.current.getBoundingClientRect().top;
 
 		if (event.pointerType === 'touch') {
 
-			document.addEventListener('touchmove', onTouchMove);
-
-			document.ontouchend = function() {
+			function onEnd() {
 				document.removeEventListener('touchmove', onTouchMove);
-				document.ontouchend = null;
-				addListeners();
-				return false;
+				document.removeEventListener('touchend', onEnd);
 			}
+
+			document.addEventListener('touchmove', onTouchMove);
+			document.addEventListener('touchend', onEnd);
 		} else {
 			
-			document.addEventListener('pointermove', onPointerMove);
-
-			document.onpointerup = function() {
+			function onUp() {
 				document.removeEventListener('pointermove', onPointerMove);
-				document.onpointerup = null;
-				addListeners();
-				return false;
+				document.removeEventListener('pointerup', onUp);
 			}
+
+			document.addEventListener('pointermove', onPointerMove);
+			document.addEventListener('pointerup', onUp);
 		}
 	}, [])
 

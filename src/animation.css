@@ -121,8 +121,8 @@
 }
 
 .title-sperm {
-	top: 12%;
-	right: -9%;
+	top: 6%;
+	left: 49%;
 	z-index: 6;
 	transform: rotate(-14deg);
 	animation: 3s 1 forwards ease-out title-sperm;
@@ -130,7 +130,7 @@
 
 @keyframes title-sperm {
 	0% {
-		top: 12%;
+		top: 6%;
 	}
 
 	100% {

@@ -1,10 +1,10 @@
 import React, {useRef, useState, useCallback, useEffect} from 'react'
-import Hello from './components/Hello.js'
 import Header from './components/Header.js'
-import Info from './components/Info.js'
-import BottlePage from './components/BottlePage.js'
-import Modal from './components/Modal.js'
+import HelloSlide from './components/HelloSlide.js'
+import InfoSlide from './components/InfoSlide.js'
+import BottleSlide from './components/BottleSlide.js'
 import Footer from './components/Footer.js'
+import Modal from './components/Modal.js'
 
 export default function App() {
 
@@ -46,47 +46,42 @@ export default function App() {
 
 	let eventStart;
 	let eventEnd;
+	let isIgnored = useCallback(false, []);
 
-	const onDown = useCallback((event) => {
-		event.preventDefault()
+	const onPointerDown = useCallback((event) => {
+		event.preventDefault();
+
+		let isModal = document.querySelector('#modal');
+
+		if (event.target.id === 'thumb' || event.target.id === 'slider' || isModal) {
+			isIgnored = true;
+			return;
+		} 
+
+		isIgnored = false;
 
 		eventStart = event.clientX;
-
-		document.addEventListener('pointermove', onMove);
 	}, [])
 
-	const onMove = useCallback((event) => {
-		event.preventDefault();
-	}, [])
+	const onPointerUp = useCallback((event) => {
+		if (isIgnored) return;
 
-	const onUp = useCallback((event) => {
 		eventEnd = event.clientX;
 
 		if (eventEnd - eventStart > document.documentElement.clientWidth * 0.15) swipe(documentWrapper.current, 'right')
 			else if (eventStart - eventEnd > document.documentElement.clientWidth * 0.15) swipe(documentWrapper.current, 'left');
-
-		document.removeEventListener('pointermove', onMove);
 	}, [])
 
+
 	const onTouchEnd = useCallback((event) => {
+		if (isIgnored) return;
+
 		eventEnd = event.changedTouches[0].clientX;
 		
 		if (eventEnd - eventStart > document.documentElement.clientWidth * 0.15) swipe(documentWrapper.current, 'right')
 			else if (eventStart - eventEnd > document.documentElement.clientWidth * 0.15) swipe(documentWrapper.current, 'left');
 
 		return false;
-	}, [])
-
-	const addListeners = useCallback(() => {
-		document.addEventListener('touchend', onTouchEnd);
-		document.addEventListener('pointerdown', onDown);
-		document.addEventListener('pointerup', onUp);
-	}, [])
-
-	const removeListeners = useCallback(() => {
-		document.removeEventListener('touchend', onTouchEnd);
-		document.removeEventListener('pointerdown', onDown);
-		document.removeEventListener('pointerup', onUp);
 	}, [])
 
 	function toggleModal() {
@@ -102,7 +97,9 @@ export default function App() {
 	}
 
 	useEffect(() => {
-		addListeners()
+		document.addEventListener('touchend', onTouchEnd);
+		document.addEventListener('pointerdown', onPointerDown);
+		document.addEventListener('pointerup', onPointerUp);
 	}, [])
 
 	return (
@@ -110,19 +107,18 @@ export default function App() {
 			<div id='rotate'>
 				<p>Поверните ваше устройство</p>
 			</div>
+
+			{modal && <Modal onClick={toggleModal} />}
 			
 			<Header elem={documentWrapper} swipe={swipe} />
 
-			{modal && <Modal onClick={toggleModal} addListeners={addListeners} />}
-			{modal && removeListeners()}
-
 			<div id='flex-wrapper' ref={documentWrapper}>
 
-				<Hello elem={documentWrapper} swipe={swipe} />
+				<HelloSlide elem={documentWrapper} swipe={swipe} />
 
-				<Info removeListeners={removeListeners} addListeners={addListeners} classes={classes} />
+				<InfoSlide classes={classes} />
 
-				<BottlePage onClick={toggleModal}/>
+				<BottleSlide onClick={toggleModal}/>
 
 			</div>
 
