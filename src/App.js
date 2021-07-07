@@ -7,7 +7,7 @@ import Modal from './components/Modal.js'
 import Footer from './components/Footer.js'
 
 export default function App() {
-//test
+
 	const documentWrapper = useRef(null);
 	const [modal, setModal] = useState(false);
 	const [classes, setClasses] = useState('');
