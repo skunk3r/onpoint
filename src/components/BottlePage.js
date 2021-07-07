@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function BottlePage({onClick}) {
 	return (
-		<div className='content'>
-			<div className='flex-row'>
+		<div className='content last'>
+			<div className='flex-row height-100'>
 				<div id='bottle-div'></div>
 				<div className='flex-box mg-top'>
 					<h2>Ключевое сообщение</h2>

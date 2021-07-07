@@ -124,14 +124,13 @@
 	top: 12%;
 	right: -9%;
 	z-index: 6;
-	transform: rotate(-8deg);
-	animation: 4s 1 forwards ease-out title-sperm;
+	transform: rotate(-14deg);
+	animation: 3s 1 forwards ease-out title-sperm;
 }
 
 @keyframes title-sperm {
 	100% {
-		 top: 15%;
-		 right: -1%;
+		 transform: translate(-12%, 28%) rotate(-8deg);
 	}
 } 
 
@@ -207,7 +206,7 @@
 
 .bubble:nth-of-type(2) {
 	top: 77%;
-	left: 25%;
+	left: 26%;
 	z-index: 12;
 	filter: hue-rotate(50deg);
 	animation: 8s infinite linear bubble-2;
@@ -215,24 +214,19 @@
 
 @keyframes bubble-2 {
 	0% {
-		top: 77%;
-		left: 25%;
+		transform: translate(0, 0);
 	}
-	
+
 	25% {
-		top: 75%;
-		left: 24%;
-		transform: scale(0.9);
+		transform: translate(-30%, -15%) scale(0.9);
 	}
 
 	50% {
-		top: 74%;
-		left: 26%;
+		transform: translate(10%, -35%);
 	}
 
 	75% {
-		top: 75%;
-		left: 28%;
+		transform: translate(40%, -25%);
 	}
 }
 
@@ -357,8 +351,7 @@
 
 @keyframes bubble-8 {
 	0% {
-		top: 77%;
-		left: 3%;
+		transform: translate(1px, 1px);
 	}
 
 	50% {
@@ -367,22 +360,5 @@
 
 	100% {
 		transform: translate(70%, 21%) scale(1.2);
-	}
-}
-
-@media (min-width: 1300px) {
-	.bubble:nth-of-type(1) {
-		top: 38%;
-		left: 12%;
-	}
-
-	.bubble:nth-of-type(5) {
-		top: 20%;
-		left: 12%;
-	}
-
-	.bubble:nth-of-type(4) {
-		top: 28%;
-		left: 8%;
 	}
 }

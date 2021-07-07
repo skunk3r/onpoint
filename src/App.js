@@ -107,7 +107,10 @@ export default function App() {
 
 	return (
 		<div id='wrapper'>
-
+			<div id='rotate'>
+				<p>Поверните ваше устройство</p>
+			</div>
+			
 			<Header elem={documentWrapper} swipe={swipe} />
 
 			{modal && <Modal onClick={toggleModal} addListeners={addListeners} />}
@@ -124,7 +127,6 @@ export default function App() {
 			</div>
 
 			<Footer />
-			
 		</div>
 	)
 }

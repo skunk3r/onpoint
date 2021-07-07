@@ -31,7 +31,7 @@ export default function Modal({onClick, addListeners}) {
 						src='assets/img/close-button.png' 
 						alt='close' onClick={() => {onClick(); addListeners()}} />
 				</button>
-				<div className='animation-box'>
+				<div id='animation-box'>
 					<h2>Преимущества</h2>
 					<h1 className='brand'>BREND<strong>XY</strong></h1>
 					<div id='list-container'>

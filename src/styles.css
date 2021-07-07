@@ -10,12 +10,24 @@
 	list-style: none;
 }
 
+html {
+	height: 100%;
+}
+
 body {
 	font-family: 'DIN Pro', sans-serif;
 	background: #fff url(assets/img/bg.jpg) no-repeat;
+	background-size: auto;
 	transition: background .9s;
 	overflow-x: hidden;
-	height: auto;
+	overflow-y: auto;
+	height: 100%;
+	min-height: 620px;
+	max-height: 1500px;
+}
+
+#root {
+	height: 100%;
 }
 
 h1, h2 {
@@ -63,12 +75,14 @@ img {
 
 #wrapper {
 	overflow: hidden;
+	height: 100%;
 }
 
 #flex-wrapper {
 	display: inline-flex;
 	flex-flow: row;
 	width: 300%;
+	height: 100%;
 	transition: all .5s;
 }
 
@@ -170,13 +184,13 @@ area {
 .info-box {
 	margin-top: 50px;
 	margin-bottom: 3%;
-	height: 455px;
+	height: 55vh;
 	position: relative;
 	z-index: 5;
 }
 
 .mg-top {
-	padding-top: 155px;
+	padding-top: 15vh;
 }
 
 #info-container {
@@ -185,9 +199,8 @@ area {
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	width: 85%;
+	width: 70%;
 	min-width: 400px;
-	max-width: 900px;
 	background-color: #fff;
 	border: 1px solid white;
 	border-radius: 40px;
@@ -238,4 +251,130 @@ area {
 	height: 108px;
 	background: url(assets/img/thumb.png) no-repeat;
 }
- 
+
+#rotate {
+	height: 100%;
+	width: 100%;
+	background: linear-gradient(to bottom, lavender, lavenderblush);
+	display: none;
+}
+
+#rotate p {
+	margin:  auto;
+	text-align: center;
+	font-size: 2em;
+	font-family: 'Gilroy Light', sans-serif;
+}
+
+@media screen and (orientation: portrait) { 
+	#rotate {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+@media (min-width: 1250px) {
+	.title {
+		font-size: 9vw;
+	}
+
+	.bubble:nth-of-type(1) {
+		top: 38%;
+		left: 12%;
+	}
+
+	.bubble:nth-of-type(2) {
+		left: 21%;
+	}
+
+	.bubble:nth-of-type(5) {
+		top: 20%;
+		left: 12%;
+	}
+
+	.bubble:nth-of-type(4) {
+		top: 28%;
+		left: 8%;
+	}
+}
+
+@media (max-width: 950px), (max-height: 750px) {
+	.details-box {
+		font-size: 1.2em;
+	}
+
+	#list {
+		font-size: 1.4em;
+	}
+}
+
+@media (min-height: 800) {
+	body {
+		color: blue;
+		background-size: cover;
+	}
+}
+
+@media (max-width: 800px) {
+	#bottle-div {
+		display: none;
+	}
+
+	.details-box {
+		font-size: 1.4em;
+	}
+
+	#modal-body {
+		margin-left: 55px;
+	}
+
+	#list {
+		font-size: 1.3em;
+	}
+
+	#animation-box {
+		margin-left: 60px;
+	}
+
+	.content.last {
+		background: url('../src/assets/img/bottle.png') no-repeat transparent;
+		background-size: contain;
+		background-position-y: 100%;
+		background-position-x: right;
+	}
+
+	.bubble:nth-of-type(2) {
+		left: 55%;
+	}
+
+	.bubble:nth-of-type(8) {
+		left: -7%;
+	}
+}
+
+@media (max-width: 750px) {
+	.title-sperm, .bubble:nth-of-type(6) {
+		display: none;
+	}
+}
+
+@media (max-width: 700px) {
+	.details-box {
+		font-size: 1.3em;
+	}
+
+	#list {
+		font-size: 1.2em;
+	}
+}
+
+@media (max-width: 600px) {
+	.details-box {
+		font-size: 1.2em;
+	}
+
+	#list {
+		font-size: 1.1em;
+	}
+}
