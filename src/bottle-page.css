@@ -69,8 +69,9 @@
 #modal {
 	position: absolute;
 	width: 100%;
+	min-width: 490px;
 	height: 100%;
-	min-height: 620px;
+	min-height: 450px;
 	background: rgba(91, 103, 120, 0.7);
 	z-index: 11;
 	animation: show 0.5s;
@@ -155,7 +156,7 @@
 	align-items: center;
 	justify-content: space-between;
 	width: 90px;
-	margin: 50px 0 35px 0;
+	margin: 6.5vh 0 3vh 0;
 }
 
 #pagination > button > img {
