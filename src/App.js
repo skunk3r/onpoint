@@ -104,6 +104,10 @@ export default function App() {
 
 	return (
 		<div id='wrapper'>
+			<div id='show-swipe'>
+				<p>swipe</p>
+				<div className='circle'></div>
+			</div>
 			<div id='rotate'>
 				<p>Поверните ваше устройство</p>
 			</div>

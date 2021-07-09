@@ -93,7 +93,6 @@ header {
 	justify-content: space-between;
 	align-items: center;
 	position: absolute;
-	width: 60%;
 	height: 27px;
 	z-index: 10;
 	margin-top: 1.5%;
@@ -264,6 +263,41 @@ footer {
 	text-align: center;
 	font-size: 2em;
 	font-family: 'Gilroy Light', sans-serif;
+}
+
+#show-swipe {
+	display: flex;
+	flex-flow: column;
+	position: fixed;
+	width: 18%;
+	justify-content: center;
+	left: 41%;
+	top: 42%;
+}
+
+#show-swipe > p {
+	font-size: 50px;
+	font-family: 'Gilroy ExtraBold', sans-serif;
+    align-self: center;
+}
+
+#show-swipe > .circle {
+	width: 30px;
+	height: 30px;
+	border-radius: 100%;
+	background: black;
+	align-self: flex-end;
+	animation: .5s ease-out forwards swipe;
+}
+
+@keyframes swipe {
+	0% {
+		transform: none;
+	}
+
+	100% {
+		transform: translateX(-340%);
+	}
 }
 
 @media screen and (orientation: portrait) { 
