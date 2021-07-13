@@ -13,8 +13,6 @@ export default function Header({elem, swipe}) {
 				alt='line'
 				className='home-line' />
 			<p>Project</p>
-			<button onClick={() => swipe(elem.current, 'right')}>&#8592;</button>
-			<button onClick={() => swipe(elem.current, 'left')}>&#8594;</button>
 		</header>
 	)
 }

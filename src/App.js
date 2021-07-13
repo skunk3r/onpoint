@@ -8,6 +8,8 @@ import Modal from './components/Modal.js'
 
 export default function App() {
 
+	const swipeModal = useRef(null);
+	const swipeCircle = useRef(null);
 	const documentWrapper = useRef(null);
 	const [modal, setModal] = useState(false);
 	const [classes, setClasses] = useState('');
@@ -96,17 +98,24 @@ export default function App() {
 		setClasses('');
 	}
 
+	function removeSwipeModal() {
+		swipeCircle.current.addEventListener('animationend', () => setTimeout(() => swipeModal.current.remove(), 300), {once: true});
+	}
+
 	useEffect(() => {
 		document.addEventListener('touchend', onTouchEnd);
 		document.addEventListener('pointerdown', onPointerDown);
 		document.addEventListener('pointerup', onPointerUp);
+		removeSwipeModal();
 	}, [])
 
 	return (
 		<div id='wrapper'>
-			<div id='show-swipe'>
-				<p>swipe</p>
-				<div className='circle'></div>
+			<div id='modal' ref={swipeModal}>
+				<div id='show-swipe'>
+					<p>swipe</p>
+					<div className='swipe-circle' ref={swipeCircle}></div>
+				</div>
 			</div>
 			<div id='rotate'>
 				<p>Поверните ваше устройство</p>

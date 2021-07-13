@@ -99,13 +99,6 @@ header {
 	margin-left: 55px;
 }
 
-header > button {
-	width: 50px;
-	padding: 0 15px 5px;
-	border: 1px solid #000;
-	border-radius: 5px;
-}
-
 .home-button {
 	height: 20px;
 	cursor: pointer;
@@ -269,34 +262,62 @@ footer {
 	display: flex;
 	flex-flow: column;
 	position: fixed;
-	width: 18%;
-	justify-content: center;
-	left: 41%;
+	width: 200px;
+	height: 100px;
+	left: calc(50% - 100px);
 	top: 42%;
 }
 
 #show-swipe > p {
 	font-size: 50px;
 	font-family: 'Gilroy ExtraBold', sans-serif;
-    align-self: center;
+	align-self: center;
+	color: white;
 }
 
-#show-swipe > .circle {
+.swipe-circle {
+	position: absolute;
+	bottom: 0;
+	right: 0;
 	width: 30px;
 	height: 30px;
 	border-radius: 100%;
-	background: black;
-	align-self: flex-end;
-	animation: .5s ease-out forwards swipe;
+	background: white;
 }
 
 @keyframes swipe {
 	0% {
-		transform: none;
+		right: 0;
+		width: 30px;
+		height: 30px;
+	}
+
+	10% {
+		width: 34px;
+	}
+
+	20% {
+		width: 37px;
+	}
+
+	30% {
+		width: 40px;
+	}
+
+	80% {
+		width: 40px;
 	}
 
 	100% {
-		transform: translateX(-340%);
+		right: calc(100% - 30px);
+		width: 30px;
+		height: 30px;
+	}
+}
+
+@media screen and (orientation: landscape) {
+	.swipe-circle {
+		animation: .75s .5s ease-out forwards swipe;
 	}
 }
 
