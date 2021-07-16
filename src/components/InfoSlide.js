@@ -12,10 +12,13 @@ export default function Info({classes}) {
 	let shiftY;
 
 	const onTouchMove = useCallback((event) => {
-		let botBorder = refSlider.current.offsetHeight - refThumb.current.offsetHeight + 1;
+		let thumbSizes = refThumb.current.getBoundingClientRect();
+		let sliderSizes = refSlider.current.getBoundingClientRect();
+
+		let botBorder = sliderSizes.height - thumbSizes.height + 1;
 		let newPosY = event.target === refSlider.current ? 
-		event.touches[0].clientY - refSlider.current.getBoundingClientRect().top - refThumb.current.offsetHeight / 2 : 
-		event.touches[0].clientY - shiftY - refSlider.current.getBoundingClientRect().top;
+		event.touches[0].clientY - sliderSizes.top - thumbSizes.height / 2 : 
+		event.touches[0].clientY - shiftY - sliderSizes.top;
 		
 		newPosY = newPosY < -1 ? -1 : newPosY;
 		newPosY = newPosY > botBorder ? botBorder : newPosY;
@@ -25,10 +28,13 @@ export default function Info({classes}) {
 	}, [])
 
 	const onPointerMove = useCallback((event) => {
-		let botBorder = refSlider.current.offsetHeight - refThumb.current.offsetHeight + 1;
+		let thumbSizes = refThumb.current.getBoundingClientRect();
+		let sliderSizes = refSlider.current.getBoundingClientRect();
+
+		let botBorder = sliderSizes.height - thumbSizes.height + 1;
 		let newPosY = event.target === refSlider.current ? 
-		event.clientY - refSlider.current.getBoundingClientRect().top - refThumb.current.offsetHeight / 2 : 
-		event.clientY - shiftY - refSlider.current.getBoundingClientRect().top;
+		event.clientY - sliderSizes.top - thumbSizes.height / 2 : 
+		event.clientY - shiftY - sliderSizes.top;
 		
 		newPosY = newPosY < -1 ? -1 : newPosY;
 		newPosY = newPosY > botBorder ? botBorder : newPosY;
@@ -82,15 +88,23 @@ export default function Info({classes}) {
 
 	const calculateCoef = useCallback(() => {
 			return (
-			(refInfo.current.scrollHeight - (refCutter.current.clientHeight - 30)) / 
-			(refSlider.current.offsetHeight - refThumb.current.offsetHeight + 2)
+				(refInfo.current.scrollHeight - (refCutter.current.clientHeight - 30)) / 
+				(refSlider.current.offsetHeight - refThumb.current.offsetHeight + 2)
 			)
 		}, [])
 
 	const onResize = useCallback(() => {
-		let oldPosY = refThumb.current.getBoundingClientRect().top - refSlider.current.getBoundingClientRect().top;
+		let thumbSizes = refThumb.current.getBoundingClientRect();
+		let sliderSizes = refSlider.current.getBoundingClientRect();
 
-		refInfo.current.style.marginTop = - oldPosY * coef.current + 'px';
+		let currentPos = thumbSizes.top - sliderSizes.top;
+		let botBorder = sliderSizes.height - thumbSizes.height + 1;
+
+		if (currentPos > botBorder) {
+			refThumb.current.style.top = botBorder + 'px';
+		}
+
+		refInfo.current.style.marginTop = - currentPos * coef.current + 'px';
 	}, [])
 
 	const throttler = useCallback(() => {
